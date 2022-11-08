@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {} from 'react-icons/ai'
-import icon from '../../../images/Electro icon.jpg'
+import {} from "react-icons/ai";
+import icon from "../../../images/Electro icon.jpg";
 
 const Header = () => {
   const menuItems = (
     <>
       <li>
         <Link to="/">Home</Link>
-        <Link to="/">service</Link>
-        <Link to="/">login</Link>
+        <Link to="/services">service</Link>
+        <Link to="/login">Login</Link>
       </li>
     </>
   );
   return (
     <div>
-      <div className="navbar bg-red-500 sticky px-4 mb-12 shadow text-white font-bold">
+      <div className="navbar bg-red-500  px-4 mb-12 shadow text-white font-bold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,22 +38,20 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow text-black bg-base-100 rounded-box w-52"
             >
-                {menuItems}
+              {menuItems}
             </ul>
           </div>
-          <div>
-            <img className="w-16 inline rounded-full" src={icon} alt="" />
-          <Link to='/' className="btn btn-ghost normal-case text-xl">Electro</Link>
+          <div className="flex justify-center items-center ml-10">
+            <img className="w-16 rounded-full" src={icon} alt="" />
+            <Link to="/" className="btn btn-ghost normal-case text-xl">
+              Electro
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            {menuItems}
-          </ul>
+          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
-        <div className="navbar-end">
-          <Link className="btn">Get started</Link>
-        </div>
+        <div className="navbar-end"></div>
       </div>
     </div>
   );

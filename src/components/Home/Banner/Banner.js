@@ -7,7 +7,7 @@ const Banner = () => {
       <div className="hero min-h-screen bg-base-200 rounded-md">
         <div className="hero-content grid grid-cols-1 md:grid-cols-2">
           <div>
-            <img src={banner} className=" rounded-lg h-96 shadow-2xl" />
+            <img src={banner} className=" rounded-lg h-96 shadow-2xl" alt="banner"/>
           </div>
           <div className="text-center md:text-start">
             <h1 className="text-5xl font-bold">
