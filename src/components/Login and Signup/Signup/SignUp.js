@@ -1,21 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import signup from "../../../images/signup.webp";
 
 const SignUp = () => {
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+  };
 
-    const handleSignUp = (e)=>{
-        e.preventDefault()
-        const form = e.target;
-        const email = form.email.value
-        const password = form.password.value;
-    
-        
-      }
-    
   return (
-    <div>
-      <div className="hero bg-base-200">
+    <div className="my-12">
+      <div className="hero">
         <div className="hero-content  grid grid-cols-1 md:grid-cols-2 ">
-          <div className="card  w-96 shadow-2xl bg-base-100">
+          <div className="text-center">
+            <img src={signup} alt="" />
+          </div>
+          <div className="card mx-auto  w-96 shadow-2xl bg-base-100">
             <h2 className="text-5xl text-center font-bold m-5 text-red-500">
               Please Sign Up
             </h2>
@@ -41,11 +43,7 @@ const SignUp = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+                <p><small><Link to='/login'>Already Have an Account?</Link></small></p>
               </div>
               <div className="form-control mt-6">
                 <button
@@ -56,9 +54,6 @@ const SignUp = () => {
                 </button>
               </div>
             </form>
-          </div>
-          <div className="text-center">
-            <h2>hello</h2>
           </div>
         </div>
       </div>
