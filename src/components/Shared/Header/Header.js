@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {} from 'react-icons/ai'
+import icon from '../../../images/Electro icon.jpg'
 
 const Header = () => {
   const menuItems = (
@@ -13,7 +15,7 @@ const Header = () => {
   );
   return (
     <div>
-      <div className="navbar bg-red-500  shadow p-4 text-white font-bold">
+      <div className="navbar bg-red-500 sticky px-4 mb-12 shadow text-white font-bold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,7 +41,10 @@ const Header = () => {
                 {menuItems}
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+          <div>
+            <img className="w-16 inline rounded-full" src={icon} alt="" />
+          <Link to='/' className="btn btn-ghost normal-case text-xl">Electro</Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
