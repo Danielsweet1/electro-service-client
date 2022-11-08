@@ -1,14 +1,19 @@
+import { data } from "autoprefixer";
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 
-const AddReview = () => {
+const AddReview = ({ _id }) => {
   const { user } = useContext(AuthContext);
+  const { displayName, photoURL } = user;
 
   const addReview = (e) => {
     e.preventDefault();
     const reviewText = e.target.text.value;
     const review = {
-      user,
+      serviceId: _id,
+      userName: displayName,
+      userImage: photoURL,
       review: reviewText,
     };
     fetch("http://localhost:5000/reviews", {
@@ -19,8 +24,12 @@ const AddReview = () => {
       body: JSON.stringify(review),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((e) => console.log(e.message));
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Review Added successful");
+        }
+      })
+      .catch((e) => toast.error(e.message));
   };
 
   return (

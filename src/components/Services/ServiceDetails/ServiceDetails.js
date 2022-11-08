@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import AddReview from "../../Reviews/AddReview/AddReview";
 import Reviews from "../../Reviews/Reviews";
 
 const ServiceDetails = () => {
-  const { serviceName, img, price, rating, description } = useLoaderData();
+  const [reviews, setReviews] = useState([])
+
+  const { serviceName, img, price, rating, description,_id } = useLoaderData();
+  console.log(_id)
   return (
     <div className="my-12 max-w-screen-xl">
       <div className="card max-w-screen-lg border mx-auto  bg-base-100 shadow-xl">
@@ -29,8 +32,8 @@ const ServiceDetails = () => {
           Reviews
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-8">
-          <AddReview></AddReview>
-          <Reviews></Reviews>
+          <AddReview _id={_id}></AddReview>
+          <Reviews reviews={reviews} setReviews={setReviews}></Reviews>
         </div>
       </div>
     </div>
