@@ -5,6 +5,7 @@ import SignUp from "../../components/Login and Signup/Signup/SignUp";
 import ServiceDetails from "../../components/Services/ServiceDetails/ServiceDetails";
 import Services from "../../components/Services/Services";
 import Main from "../../Layouts/Main";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`),
-                element: <ServiceDetails></ServiceDetails>
+                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
             },
             {
                 path: '/login',
