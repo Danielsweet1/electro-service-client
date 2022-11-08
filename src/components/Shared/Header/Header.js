@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import {} from "react-icons/ai";
 import icon from "../../../images/Electro icon.jpg";
+import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const menuItems = (
     <>
       <li>
         <Link to="/">Home</Link>
-        <Link to="/services">service</Link>
-        <Link to="/login">Login</Link>
+        {user?.email && (
+          <>
+            <Link>My Reviews</Link>
+            <Link>Add Service</Link>
+          </>
+        )}
       </li>
     </>
   );
   return (
     <div>
-      <div className="navbar bg-red-500  px-4 mb-12 shadow text-white font-bold">
+      <div className="navbar bg-red-500  px-5 mb-12 shadow text-white font-bold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,6 +58,11 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
         <div className="navbar-end"></div>
+        {
+          user?.email ? <Link onClick={logOut}>LogOut</Link>
+          :
+          <Link to='/login'>LogIn</Link>
+        }
       </div>
     </div>
   );

@@ -1,27 +1,43 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 import login from "../../../images/login.jpg";
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
+  const [err, setErr] = useState('')
+  const {logIn} = useContext(AuthContext)
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    logIn(email, password)
+    .then(result=> {
+      toast.success('Successfully Logged In')
+      setErr('')
+      form.reset()
+    })
+    .catch(e=> {
+      toast.error(e.message)
+      setErr(e.message)
+    })
   };
 
   return (
     <div className="my-12">
       <div className="hero ">
-        <div className="hero-content  grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="hero-content w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="text-center">
-            <img src={login} alt="" />
+            <img className="w-full" src={login} alt="" />
           </div>
-          <div className="card mx-auto w-96 shadow-2xl bg-base-100">
+          <div className="card mx-auto w-full shadow-2xl bg-base-100">
             <h2 className="text-5xl text-center font-bold m-5 text-red-500">
               Please Login
             </h2>
             <form onSubmit={handleLogin} className="card-body">
+            <p className="text-center text-red-500 my-2"><small>{err}</small></p>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -31,6 +47,7 @@ const Login = () => {
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -42,11 +59,12 @@ const Login = () => {
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
+                  <Link href="#" className="label-text-alt link link-hover">
                     Forgot password?
-                  </a>
+                  </Link>
                 </label>
               </div>
               <div className="form-control mt-6">
@@ -58,7 +76,7 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <p className="mb-3 text-center"><Link to='/signup'>Create New Account? <span className="text-red-500">Signup</span></Link></p>
+            <p className="mb-5 text-center"><Link to='/signup'>Create New Account? <span className="text-red-500">Signup</span></Link></p>
           </div>
         </div>
       </div>
