@@ -19,7 +19,7 @@ const ServiceCard = ({ service }) => {
               Rating: <span className="text-orange-500">{rating}</span>
             </p>
           </div>
-          <p>{description.slice(0, 100) + "...."}</p>
+          <p>{description?.slice(0, 100) + "...."}</p>
           <div className="">
             <Link to={`/services/${_id}`}> 
               <button className="btn bg-red-500 hover:bg-red-700 border-none my-3">

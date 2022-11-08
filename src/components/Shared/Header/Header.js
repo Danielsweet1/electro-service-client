@@ -10,12 +10,14 @@ const Header = () => {
     <>
       <li>
         <Link to="/">Home</Link>
+
         {user?.email && (
           <>
             <Link>My Reviews</Link>
-            <Link>Add Service</Link>
+            <Link to="/addservices">Add Service</Link>
           </>
         )}
+        <Link to="/blog">Blog</Link>
       </li>
     </>
   );
@@ -58,11 +60,11 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
         <div className="navbar-end"></div>
-        {
-          user?.email ? <Link onClick={logOut}>LogOut</Link>
-          :
-          <Link to='/login'>LogIn</Link>
-        }
+        {user?.email ? (
+          <Link onClick={logOut}>Logout</Link>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </div>
   );

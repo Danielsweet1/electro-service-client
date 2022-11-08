@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddServices from "../../components/AddServices/AddServices";
+import Blog from "../../components/Blog/Blog";
 import Home from "../../components/Home/Home/Home";
 import Login from "../../components/Login and Signup/Login/Login";
 import SignUp from "../../components/Login and Signup/Signup/SignUp";
@@ -23,7 +25,7 @@ export const router = createBrowserRouter([
             {
                 path: '/services/:id',
                 loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`),
-                element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
+                element: <ServiceDetails></ServiceDetails>
             },
             {
                 path: '/login',
@@ -32,6 +34,14 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/addservices',
+                element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
+            },
+            {
+                path:'/blog',
+                element: <Blog></Blog>
             }
         ]
     }
