@@ -15,7 +15,6 @@ const AddServices = () => {
     const description = form.description.value;
     const price = form.price.value;
     const service = {
-      email,
       serviceName,
       photo,
       price,
