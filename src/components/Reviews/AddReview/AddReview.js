@@ -14,6 +14,7 @@ const AddReview = ({ _id }) => {
       userName: user?.displayName,
       userImage: user?.photoURL,
       review: reviewText,
+      email:user?.email
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",

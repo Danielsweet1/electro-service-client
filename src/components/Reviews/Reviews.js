@@ -12,7 +12,7 @@ const Reviews = ({ reviews, setReviews, _id }) => {
       <h2 className="text-xl font-bold text-center">Reviews</h2>
 
       {reviews.map((review) => (
-        <div className="border p-4 m-4" key={review._id}>
+        <div className="border p-4  my-8" key={review._id}>
           <div className="mb-12">
             <div className="flex justify-start items-center relative ">
               <div className="border p-1 rounded-md absolute left-1 bg-white">

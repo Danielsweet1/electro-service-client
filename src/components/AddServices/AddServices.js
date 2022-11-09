@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/authContexts/AuthProvider";
+import { useTitle } from "../../hooks/useTitle";
 
 const AddServices = () => {
   const { user } = useContext(AuthContext);
+  useTitle('Add Service')
 
   const handleSubmit = (e) => {
     e.preventDefault();

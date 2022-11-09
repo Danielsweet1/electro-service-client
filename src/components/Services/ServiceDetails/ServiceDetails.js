@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { useTitle } from "../../../hooks/useTitle";
 import AddReview from "../../Reviews/AddReview/AddReview";
 import Reviews from "../../Reviews/Reviews";
 
 const ServiceDetails = () => {
   const [reviews, setReviews] = useState([])
+  useTitle('ServicesDetails')
 
   const { serviceName, img, price, rating, description,_id } = useLoaderData();
   console.log(_id)

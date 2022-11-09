@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 import signup from "../../../images/signup.webp";
 import toast from "react-hot-toast";
+import { useTitle } from "../../../hooks/useTitle";
 
 const SignUp = () => {
   const [err, setErr] = useState("");
+  useTitle('Signup')
   const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
   const location = useLocation();
@@ -24,7 +26,7 @@ const SignUp = () => {
         setErr("");
         updateProfile(name, photo);
         toast.success("User Created Successfully");
-        navigate("/");
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch((error) => setErr(error.message));
@@ -78,7 +80,7 @@ const SignUp = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder="name"
+                  placeholder="photo"
                   name="photo"
                   className="input input-bordered"
                   required
