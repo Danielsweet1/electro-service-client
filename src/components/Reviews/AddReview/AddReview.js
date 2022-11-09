@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 
-const AddReview = ({ _id }) => {
+const AddReview = ({ _id, serviceName}) => {
   const { user } = useContext(AuthContext);
 
   const addReview = (e) => {
@@ -14,7 +14,8 @@ const AddReview = ({ _id }) => {
       userName: user?.displayName,
       userImage: user?.photoURL,
       review: reviewText,
-      email:user?.email
+      email:user?.email,
+      serviceName
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",

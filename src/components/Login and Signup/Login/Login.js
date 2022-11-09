@@ -21,6 +21,22 @@ const from = location.state?.from?.pathname || '/'
     const password = form.password.value;
     logIn(email, password)
     .then(result=> {
+      const user = result.user;
+      const currentUser = {
+        email: user?.email
+      }
+      fetch('http://localhost:5000/jwt',{
+        method: 'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(currentUser)
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+        localStorage.setItem('electro-token', data.token)
+      })
       toast.success('Successfully Logged In')
       setErr('')
       form.reset()

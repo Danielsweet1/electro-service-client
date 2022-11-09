@@ -19,7 +19,7 @@ const ServiceHome = () => {
           We have many electronic services. here are the most popular services
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mx-5 my-8">
         {services.map((service) => (
           <ServiceCard key={service._id} service={service}></ServiceCard>
         ))}

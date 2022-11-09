@@ -6,7 +6,7 @@ const Reviews = ({ reviews, setReviews, _id }) => {
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((e) => console.log(e.message));
-  }, [_id, setReviews]);
+  }, );
   return (
     <div>
       <h2 className="text-xl font-bold text-center">Reviews</h2>

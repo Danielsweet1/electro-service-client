@@ -13,7 +13,7 @@ const Header = () => {
 
         {user?.email && (
           <>
-            <Link>My Reviews</Link>
+            <Link to='/reviews'>My Reviews</Link>
             <Link to="/addservices">Add Service</Link>
           </>
         )}
@@ -61,7 +61,10 @@ const Header = () => {
         </div>
         <div className="navbar-end"></div>
         {user?.email ? (
+          <>
+          <img className="rounded-full h-12 w-12 mr-5" src={user?.photoURL} alt="img" />
           <Link onClick={logOut}>Logout</Link>
+          </>
         ) : (
           <Link to="/login">Login</Link>
         )}
