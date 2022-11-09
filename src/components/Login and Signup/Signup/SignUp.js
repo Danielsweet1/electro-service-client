@@ -1,13 +1,15 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 import signup from "../../../images/signup.webp";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [err, setErr] = useState("");
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUser, googleLogin } = useContext(AuthContext);
 
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
 
   const handleSignUp = (e) => {
@@ -32,6 +34,15 @@ const SignUp = () => {
     return updateUser(name, photo)
       .then(() => {})
       .catch((e) => console.log(e));
+  };
+
+  const handleGoogle = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Google Login Successful");
+        navigate(from, { replace: true });
+      })
+      .catch((e) => setErr(e.message));
   };
 
   return (
@@ -70,6 +81,7 @@ const SignUp = () => {
                   placeholder="name"
                   name="photo"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -110,6 +122,7 @@ const SignUp = () => {
                 </button>
               </div>
             </form>
+            <button onClick={handleGoogle} className="btn btn-outline w-2/3 mx-auto mb-5">Google</button>
           </div>
         </div>
       </div>

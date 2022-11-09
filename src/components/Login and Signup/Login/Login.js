@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Login = () => {
   const [err, setErr] = useState('')
-  const {logIn} = useContext(AuthContext)
+  const {logIn, googleLogin} = useContext(AuthContext)
 
 const navigate = useNavigate()
 const location = useLocation()
@@ -29,6 +29,15 @@ const from = location.state?.from?.pathname || '/'
       setErr(e.message)
     })
   };
+
+  const handleGoogle = () =>{
+      googleLogin()
+      .then(()=>{
+        toast.success('Google Login Successful')
+        navigate(from,{replace: true})
+      })
+      .catch(e=>setErr(e.message))
+  }
 
   return (
     <div className="my-12">
@@ -81,6 +90,7 @@ const from = location.state?.from?.pathname || '/'
                 </button>
               </div>
             </form>
+            <button onClick={handleGoogle} className="btn btn-outline w-2/3 mx-auto mb-3">Google</button>
             <p className="mb-5 text-center"><Link to='/signup'>Create New Account? <span className="text-red-500">Signup</span></Link></p>
           </div>
         </div>

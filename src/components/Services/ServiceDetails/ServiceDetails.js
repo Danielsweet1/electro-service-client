@@ -10,7 +10,7 @@ const ServiceDetails = () => {
   console.log(_id)
   return (
     <div className="my-12 max-w-screen-xl">
-      <div className="card max-w-screen-lg border mx-auto  bg-base-100 shadow-xl">
+      <div className="card max-w-screen-lg  mx-auto  bg-base-100 ">
         <figure>
           <img className="w-2/3 mt-10 rounded-xl" src={img} alt="Service" />
         </figure>
@@ -33,7 +33,7 @@ const ServiceDetails = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-8">
           <AddReview _id={_id}></AddReview>
-          <Reviews reviews={reviews} setReviews={setReviews}></Reviews>
+          <Reviews _id={_id} reviews={reviews} setReviews={setReviews}></Reviews>
         </div>
       </div>
     </div>

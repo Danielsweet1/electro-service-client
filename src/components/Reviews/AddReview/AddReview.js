@@ -1,19 +1,18 @@
-import { data } from "autoprefixer";
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 
 const AddReview = ({ _id }) => {
   const { user } = useContext(AuthContext);
-  const { displayName, photoURL } = user;
 
   const addReview = (e) => {
     e.preventDefault();
     const reviewText = e.target.text.value;
     const review = {
       serviceId: _id,
-      userName: displayName,
-      userImage: photoURL,
+      userName: user?.displayName,
+      userImage: user?.photoURL,
       review: reviewText,
     };
     fetch("http://localhost:5000/reviews", {
@@ -27,6 +26,7 @@ const AddReview = ({ _id }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success("Review Added successful");
+          e.target.reset()
         }
       })
       .catch((e) => toast.error(e.message));
@@ -55,7 +55,7 @@ const AddReview = ({ _id }) => {
           </>
         ) : (
           <div className="h-60 flex justify-center items-center">
-            <h2 className="text-3xl font-bold ">Login For Add a Review</h2>
+            <h2 className="text-3xl font-bold "><Link to='/login' className="text-blue-500">Login</Link> For Add a Review</h2>
           </div>
         )}
       </div>
