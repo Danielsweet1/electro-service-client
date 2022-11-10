@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceCard = ({ service }) => {
   const { serviceName, price, rating, img, description, _id } = service;
@@ -7,7 +8,15 @@ const ServiceCard = ({ service }) => {
     <div>
       <div className="card card-compact rounded-xl w-full bg-base-100 border shadow-xl">
         <figure>
-          <img className="h-60 w-80 rounded-xl mt-5" src={img} alt="Services" />
+          <PhotoProvider>
+            <PhotoView src={img}>
+              <img
+                className="h-60 w-80 rounded-xl mt-5"
+                src={img}
+                alt="Services"
+              />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="card-body">
           <h2 className="card-title font-bold ">{serviceName}</h2>
@@ -21,7 +30,7 @@ const ServiceCard = ({ service }) => {
           </div>
           <p>{description?.slice(0, 100) + "...."}</p>
           <div className="">
-            <Link to={`/services/${_id}`}> 
+            <Link to={`/services/${_id}`}>
               <button className="btn bg-red-500 hover:bg-red-700 border-none my-3">
                 Check Details
               </button>

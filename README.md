@@ -1,3 +1,17 @@
+project name: electro
+
+live site: https://electro-service-4a2c7.web.app/
+
+features
+
+. this site build by tailwind css and daisyUi component liabrary
+. site is responsive for mobile device
+. by clicking on the service image it with popup full page
+. you can see reviews for specfic service
+. you can't make a review without login
+. you can add service and also able to edit or delete your review
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

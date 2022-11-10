@@ -7,9 +7,9 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ServiceDetails = () => {
   const [reviews, setReviews] = useState([]);
-  useTitle("ServicesDetails");
-
+  
   const { serviceName, img, price, rating, description, _id } = useLoaderData();
+  useTitle(`${serviceName}`);
   return (
     <div className="my-12 max-w-screen-xl">
       <div className="card max-w-screen-lg  mx-auto  bg-base-100 ">
