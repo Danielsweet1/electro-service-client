@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/services/:id',
-                loader: ({params})=>fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({params})=>fetch(`https://electro-service-server.vercel.app/services/${params.id}`),
                 element: <ServiceDetails></ServiceDetails>
             },
             {
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/update/:id',
-                loader: ({params})=>fetch(`http://localhost:5000/reviews/${params.id}`),
+                loader: ({params})=>fetch(`https://electro-service-server.vercel.app/reviews/${params.id}`),
                 element: <UpdateReview></UpdateReview>
             }
         ]

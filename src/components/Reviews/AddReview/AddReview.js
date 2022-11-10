@@ -17,7 +17,7 @@ const AddReview = ({ _id, serviceName}) => {
       email:user?.email,
       serviceName
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://electro-service-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

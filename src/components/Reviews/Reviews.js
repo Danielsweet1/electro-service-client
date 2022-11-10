@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const Reviews = ({ reviews, setReviews, _id }) => {
   useEffect(() => {
-    fetch(`http://localhost:5000/service/reviews?serviceId=${_id}`)
+    fetch(`https://electro-service-server.vercel.app/service/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((e) => console.log(e.message));

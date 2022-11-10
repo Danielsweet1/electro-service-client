@@ -15,7 +15,7 @@ const UpdateReview = () => {
     const handleSubmit = (e)=>{
         e.preventDefault()
 
-        fetch(`http://localhost:5000/reviews/${storedReview._id}`,{
+        fetch(`https://electro-service-server.vercel.app/reviews/${storedReview._id}`,{
             method:'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -26,6 +26,7 @@ const UpdateReview = () => {
         .then(data=>{
             console.log(data)
             if(data.modifiedCount > 0){
+
                 toast.success('Updated Successfully')
             }
         })
@@ -39,6 +40,7 @@ const UpdateReview = () => {
     const newReview = {...review}
     newReview[field] = value;
     setReview(newReview)
+    e.target.reset()
   }
   return (
     <div className="my-20 max-w-screen-xl mx-auto">
