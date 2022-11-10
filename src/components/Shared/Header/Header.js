@@ -10,6 +10,7 @@ const Header = () => {
     <>
       <li>
         <Link to="/">Home</Link>
+        <Link to="/services">Services</Link>
 
         {user?.email && (
           <>
@@ -63,10 +64,10 @@ const Header = () => {
         {user?.email ? (
           <>
           <img className="rounded-full h-12 w-12 mr-5" src={user?.photoURL} alt="img" />
-          <Link onClick={logOut}>Logout</Link>
+          <Link className="btn bg-red-400 hover:red-700" onClick={logOut}>Logout</Link>
           </>
         ) : (
-          <Link to="/login">Login</Link>
+          <Link className="btn bg-red-400 hover:red-700" to="/login">Login</Link>
         )}
       </div>
     </div>

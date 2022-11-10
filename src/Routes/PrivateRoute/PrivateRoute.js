@@ -7,13 +7,10 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
   if (loading) {
     return (
-      <div className="flex items-center justify-center">
-        <div
-          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
+      <div className="w-full flex justify-center h-60 items-center">
+        <button className="btn loading btn-outline border border-red-500">
+          loading....
+        </button>
       </div>
     );
   }

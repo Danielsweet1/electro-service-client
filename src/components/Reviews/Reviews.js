@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 const Reviews = ({ reviews, setReviews, _id }) => {
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews/${_id}`)
+    fetch(`http://localhost:5000/service/reviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((e) => console.log(e.message));
@@ -24,7 +24,7 @@ const Reviews = ({ reviews, setReviews, _id }) => {
               </div>
               <h3 className="font-bold text-xl ml-28">{review.userName}</h3>
             </div>
-            <p className="text-sm ml-28">9 May 2022 08:20</p>
+            <p className="text-sm ml-28">{review.time.split('GMT')[0]}</p>
           </div>
           <p className="ml-5">{review.review}</p>
         </div>

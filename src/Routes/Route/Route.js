@@ -5,6 +5,7 @@ import Home from "../../components/Home/Home/Home";
 import Login from "../../components/Login and Signup/Login/Login";
 import SignUp from "../../components/Login and Signup/Signup/SignUp";
 import MyReviews from "../../components/MyReviews/MyReviews";
+import UpdateReview from "../../components/MyReviews/UpdateReview/UpdateReview";
 import ServiceDetails from "../../components/Services/ServiceDetails/ServiceDetails";
 import Services from "../../components/Services/Services";
 import Main from "../../Layouts/Main";
@@ -47,6 +48,11 @@ export const router = createBrowserRouter([
             {
                 path: '/reviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            },
+            {
+                path: '/update/:id',
+                loader: ({params})=>fetch(`http://localhost:5000/reviews/${params.id}`),
+                element: <UpdateReview></UpdateReview>
             }
         ]
     }

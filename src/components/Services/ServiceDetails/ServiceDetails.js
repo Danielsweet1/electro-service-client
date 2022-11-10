@@ -10,7 +10,6 @@ const ServiceDetails = () => {
   useTitle("ServicesDetails");
 
   const { serviceName, img, price, rating, description, _id } = useLoaderData();
-  console.log(_id);
   return (
     <div className="my-12 max-w-screen-xl">
       <div className="card max-w-screen-lg  mx-auto  bg-base-100 ">

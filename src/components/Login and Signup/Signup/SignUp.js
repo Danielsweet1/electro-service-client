@@ -8,11 +8,21 @@ import { useTitle } from "../../../hooks/useTitle";
 const SignUp = () => {
   const [err, setErr] = useState("");
   useTitle('Signup')
-  const { createUser, updateUser, googleLogin } = useContext(AuthContext);
+  const { createUser, updateUser, googleLogin,loading } = useContext(AuthContext);
 
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
+
+  if (loading) {
+    return (
+      <div className="w-full flex justify-center h-60 items-center">
+        <button className="btn loading btn-outline border border-red-500">
+          loading....
+        </button>
+      </div>
+    );
+  }
 
   const handleSignUp = (e) => {
     e.preventDefault();

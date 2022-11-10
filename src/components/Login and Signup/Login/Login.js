@@ -2,60 +2,69 @@ import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/authContexts/AuthProvider";
 import login from "../../../images/login.jpg";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import { useTitle } from "../../../hooks/useTitle";
 
-
 const Login = () => {
-  const [err, setErr] = useState('')
-  const {logIn, googleLogin} = useContext(AuthContext)
-  useTitle('Login')
+  const [err, setErr] = useState("");
+  const { logIn, googleLogin, loading} = useContext(AuthContext);
+  useTitle("Login");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
-const navigate = useNavigate()
-const location = useLocation()
-const from = location.state?.from?.pathname || '/'
+  if (loading) {
+    return (
+      <div className="w-full flex justify-center h-60 items-center">
+        <button className="btn loading btn-outline border border-red-500">
+          loading....
+        </button>
+      </div>
+    );
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     logIn(email, password)
-    .then(result=> {
-      const user = result.user;
-      const currentUser = {
-        email: user?.email
-      }
-      fetch('http://localhost:5000/jwt',{
-        method: 'POST',
-        headers:{
-          'content-type':'application/json'
-        },
-        body:JSON.stringify(currentUser)
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user?.email,
+        };
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("electro-token", data.token);
+            navigate(from, { replace: true });
+          });
+        toast.success("Successfully Logged In");
+        setErr("");
+        form.reset();
+        
       })
-      .then(res=>res.json())
-      .then(data=>{
-        console.log(data)
-        localStorage.setItem('electro-token', data.token)
-      })
-      toast.success('Successfully Logged In')
-      setErr('')
-      form.reset()
-      navigate(from,{replace: true})
-    })
-    .catch(e=> {
-      toast.error(e.message)
-      setErr(e.message)
-    })
+      .catch((e) => {
+        toast.error(e.message);
+        setErr(e.message);
+      });
   };
 
-  const handleGoogle = () =>{
-      googleLogin()
-      .then(()=>{
-        toast.success('Google Login Successful')
-        navigate(from,{replace: true})
+  const handleGoogle = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Google Login Successful");
+        navigate(from, { replace: true });
       })
-      .catch(e=>setErr(e.message))
-  }
+      .catch((e) => setErr(e.message));
+  };
 
   return (
     <div className="my-12">
@@ -69,7 +78,9 @@ const from = location.state?.from?.pathname || '/'
               Please Login
             </h2>
             <form onSubmit={handleLogin} className="card-body">
-            <p className="text-center text-red-500 my-2"><small>{err}</small></p>
+              <p className="text-center text-red-500 my-2">
+                <small>{err}</small>
+              </p>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -108,8 +119,17 @@ const from = location.state?.from?.pathname || '/'
                 </button>
               </div>
             </form>
-            <button onClick={handleGoogle} className="btn btn-outline w-2/3 mx-auto mb-3">Google</button>
-            <p className="mb-5 text-center"><Link to='/signup'>Create New Account? <span className="text-red-500">Signup</span></Link></p>
+            <button
+              onClick={handleGoogle}
+              className="btn btn-outline w-2/3 mx-auto mb-3"
+            >
+              Google
+            </button>
+            <p className="mb-5 text-center">
+              <Link to="/signup">
+                Create New Account? <span className="text-red-500">Signup</span>
+              </Link>
+            </p>
           </div>
         </div>
       </div>

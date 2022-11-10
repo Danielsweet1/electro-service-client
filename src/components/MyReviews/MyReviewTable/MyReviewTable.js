@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const MyReviewTable = ({ r, handleDelete }) => {
   const { userName, userImage, review, _id ,serviceName} = r;
@@ -22,7 +23,7 @@ const MyReviewTable = ({ r, handleDelete }) => {
         <p>{review}</p>
       </td>
       <td>
-        <button className="btn btn-outline btn-primary">Edit</button>
+        <Link to={`/update/${_id}`}><button className="btn btn-outline btn-primary">Edit</button></Link>
       </td>
       <th>
         <button

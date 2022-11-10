@@ -4,8 +4,8 @@ import footer from '../../../images/Electro icon.jpg'
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-slate-600 text-white">
+    <div className=" bg-red-700 py-3">
+      <footer className="footer p-10 text-white">
         <div>
           <img className="w-16 rounded-full" src={footer} alt="" />
           <p>
@@ -35,6 +35,7 @@ const Footer = () => {
           <Link className="link link-hover">Cookie policy</Link>
         </div>
       </footer>
+        <p className="text-white font-semibold text-center text-sm">Copyright || Daniel Sweet 2022</p>
     </div>
   );
 };
