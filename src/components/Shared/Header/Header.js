@@ -52,8 +52,8 @@ const Header = () => {
           </div>
           <div className="flex justify-center items-center ml-10">
             <img className="w-16 rounded-full" src={icon} alt="" />
-            <Link to="/" className="btn btn-ghost normal-case text-xl">
-              Electro
+            <Link to="/" className="btn btn-ghost   normal-case text-xl">
+              <p className="md:block hidden">Electro</p>
             </Link>
           </div>
         </div>
