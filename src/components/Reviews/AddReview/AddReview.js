@@ -46,6 +46,7 @@ const AddReview = ({ _id, serviceName}) => {
                   className="textarea textarea-secondary h-36 w-full"
                   placeholder="review"
                   name="text"
+                  required
                 ></textarea>
               </label>
               <input

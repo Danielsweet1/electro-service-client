@@ -64,7 +64,7 @@ const SignUp = () => {
           <div className="text-center">
             <img className="w-full" src={signup} alt="" />
           </div>
-          <div className="card mx-auto  w-full shadow-2xl bg-base-100">
+          <div className="card mx-auto  w-full shadow-lg bg-base-100">
             <h2 className="text-5xl text-center font-bold mt-5 text-red-500">
               Sign Up
             </h2>

@@ -7,7 +7,7 @@ import { useTitle } from "../../../hooks/useTitle";
 
 const Login = () => {
   const [err, setErr] = useState("");
-  const { logIn, googleLogin, loading} = useContext(AuthContext);
+  const { logIn, googleLogin, loading,setLoading} = useContext(AuthContext);
   useTitle("Login");
   const navigate = useNavigate();
   const location = useLocation();
@@ -53,6 +53,7 @@ const Login = () => {
       })
       .catch((e) => {
         toast.error(e.message);
+        setLoading(false)
         setErr(e.message);
       });
   };
@@ -73,7 +74,7 @@ const Login = () => {
           <div className="text-center">
             <img className="w-full" src={login} alt="" />
           </div>
-          <div className="card mx-auto w-full shadow-2xl bg-base-100">
+          <div className="card mx-auto w-full shadow-lg border bg-base-100">
             <h2 className="text-5xl text-center font-bold m-5 text-red-500">
               Please Login
             </h2>
