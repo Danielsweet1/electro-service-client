@@ -5,6 +5,7 @@ import Banner from '../Banner/Banner';
 import CustomerReview from '../customerReview/CustomerReview';
 import Electricians from '../Electricians/Electricians';
 import ServiceHome from '../Service/ServiceHome';
+import Users from '../Users/Users';
 
 const Home = () => {
     useTitle('Home')
@@ -14,6 +15,7 @@ const Home = () => {
             <ServiceHome></ServiceHome>
             <Electricians/>
             <Appointment></Appointment>
+            <Users/>
             <CustomerReview></CustomerReview>
         </div>
     );
